@@ -3,30 +3,53 @@ package exercises;
 public class MultipleMatrix {
 
     public static void main(String[] args) {
-        MultipleMatrix multipleMatrix = new MultipleMatrix();
-        multipleMatrix.matrixMultiplication();
-    }
-
-    public void matrixMultiplication() {
 
         int[][] a = {
                 {1, 1, 1},
                 {2, 2, 2},
                 {3, 3, 3}};
+
         int[][] b = {
                 {1, 1, 1},
                 {2, 2, 2},
                 {3, 3, 3}};
-        int[][] c = new int[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                c[i][j] = 0;
-                for (int k = 0; k < 3; k++) {
-                    c[i][j] += a[i][k] * b[k][j];
-                }
-                System.out.print(c[i][j] + " ");
+
+        System.out.println("Matrix 1");
+        printMatrix(a);
+        System.out.println("Matrix 2");
+        printMatrix(b);
+        int[][] c = multiplicationMatrix(a, b);
+        System.out.println("Multiplication result");
+        printMatrix(c);
+
+    }
+
+    public static int[][] multiplicationMatrix(int[][] a, int[][] b) {
+        int[][] multiplicationResultMatrix = new int[a.length][b[0].length];
+        for (int row = 0; row < multiplicationResultMatrix.length; row++) {
+            for (int col = 0; col < multiplicationResultMatrix[row].length; col++) {
+                multiplicationResultMatrix[row][col] = multiplyMatricesCell(a, b, row, col);
+            }
+        }
+        return multiplicationResultMatrix;
+    }
+
+    static int multiplyMatricesCell(int[][] a, int[][] b, int row, int col) {
+        int cell = 0;
+        for (int i = 0; i < b.length; i++) {
+            cell += a[row][i] * b[i][col];
+        }
+        return cell;
+    }
+
+    public static void printMatrix(int[][] a) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.printf("%d ", a[i][j]);
             }
             System.out.println();
         }
     }
 }
+
+
