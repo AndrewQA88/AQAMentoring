@@ -14,8 +14,8 @@ public class Contact {
         System.out.println("Age: " + info.profile.getAge());
         // get all values from enum
         System.out.println("------------------------------");
-        ContactInformation[] irynaEnum = ContactInformation.values();
-        for (ContactInformation names : irynaEnum) {
+        ContactInformation[] contacts = ContactInformation.values();
+        for (ContactInformation names : contacts) {
             System.out.println(names);
         }
     }
