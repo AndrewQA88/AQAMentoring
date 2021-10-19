@@ -1,12 +1,14 @@
 package exercises;
 
-public enum Iryna {
-    IRA("Ira", 30), IRYNA("Iryna", 30), IRUSYA("Irusya", 30);
+public enum ContactInformation {
+    IRA("Ira", 30),
+    JHON("Jhon", 35),
+    JACK("Jack", 49);
 
     private final String name;
     private final int age;
 
-    Iryna(String name, int age) {
+    ContactInformation(String name, int age) {
         this.name = name;
         this.age = age;
     }
