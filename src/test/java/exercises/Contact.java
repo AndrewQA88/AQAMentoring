@@ -18,5 +18,9 @@ public class Contact {
         for (ContactInformation names : contacts) {
             System.out.println(names);
         }
+        System.out.println("------------------------------");
+        // Enum "Ira" return enum value IRA
+        ContactInformation contact = ContactInformation.valueOfName("Ira");
+        System.out.println(contact);
     }
 }
