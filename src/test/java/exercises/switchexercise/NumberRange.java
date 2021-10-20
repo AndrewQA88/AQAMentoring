@@ -1,17 +1,11 @@
-package exercises;
+package exercises.switchexercise;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class IntExercise {
+public class NumberRange {
 
-    public static void main(String[] args) {
-        IntExercise intExercise = new IntExercise();
-        intExercise.printNumberWithIf();
-        //intExercise.printNumberWithSwitch();
-    }
-
-    public void printNumberWithIf() {
+    public void printNumberWithElseIf() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter value from 1 to 10");
         int number = 0;
@@ -20,7 +14,6 @@ public class IntExercise {
         } catch (InputMismatchException e) {
             System.out.println("Error: please enter digit value.");
         }
-
         if (number < 1 || number > 10) {
             System.out.println("Error: number is out of range.");
         }
