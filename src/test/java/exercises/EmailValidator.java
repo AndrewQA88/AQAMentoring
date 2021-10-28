@@ -10,11 +10,11 @@ public class EmailValidator {
     public static void main(String[] args) {
         System.out.println("Please enter email address:");
         String email = EmailValidator.enterEmailAddress();
-        boolean endDot = EmailValidator.isEndsDot(email);
+        boolean isEndsDotPresent = EmailValidator.isEndsDot(email);
         int atCount = EmailValidator.countOfAt(email, AT);
-        boolean checkPrefix = EmailValidator.isPrefixPresent(email);
+        boolean isPrefixPresent = EmailValidator.isPrefixPresent(email);
         int countOfDotAfterAt = EmailValidator.countDotAfterAt(email, DOT);
-        EmailValidator.validationMessage(endDot, atCount, checkPrefix, countOfDotAfterAt);
+        EmailValidator.validationMessage(isEndsDotPresent, atCount, isPrefixPresent, countOfDotAfterAt);
     }
 
     public static String enterEmailAddress() {
