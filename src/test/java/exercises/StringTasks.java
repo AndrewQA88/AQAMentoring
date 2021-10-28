@@ -1,42 +1,38 @@
 package exercises;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StringTasks {
 
     public static void main(String[] args) {
+
         System.out.println("Please enter the text:");
         String text = StringTasks.readTextFromConsole();
         System.out.println("Your text: " + text);
         System.out.println("Enter the character you want to count:");
-        char input = StringTasks.putChar();
+        char input = StringTasks.readChar();
         int count = StringTasks.countCharacters(text, input);
         System.out.println("Numbers of chosen character are " + count);
-        System.out.println("Please enter starting number of character from 0:");
-        int startingNumber = StringTasks.putStartingNumber();
-        System.out.println("Please put new character:");
-        char charToReplace = StringTasks.putCharacterToReplace();
-        String updatedText = StringTasks.replaceCharacter(text, startingNumber, charToReplace);
-        System.out.println("Text after modification: " + updatedText);
-        System.out.println("Cut text:");
-        System.out.println("Please enter the start index:");
-        int startingIndex = StringTasks.putStartingNumber();
-        System.out.println("Please enter the end index:");
-        int endIndex = StringTasks.putEndNumber();
-        String cutText = StringTasks.cutString(text, startingIndex, endIndex);
+        System.out.println("Please enter character you want to replace:");
+        char currentChar = StringTasks.readChar();
+        System.out.println("Please enter new character:");
+        char newChar = StringTasks.readChar();
+        String updatedText = StringTasks.replaceCharacter(text, currentChar, newChar);
+        System.out.println("Text after update: " + updatedText);
+        System.out.println("Enter the character you want to cut from/to:");
+        char cutChar = StringTasks.readChar();
+        String cutText = StringTasks.cutText(text, cutChar);
         System.out.println(cutText);
     }
 
     public static String readTextFromConsole() {
-        Scanner scanner = new Scanner(System.in);
-        String text = scanner.nextLine();
-        return text;
+        return new Scanner(System.in).nextLine();
     }
 
-    public static char putChar() {
-        Scanner inputChar = new Scanner(System.in);
-        char input = inputChar.next().charAt(0);
-        return input;
+    public static char readChar() {
+        return new Scanner(System.in).next().charAt(0);
     }
 
     public static int countCharacters(String text, char input) {
@@ -48,30 +44,20 @@ public class StringTasks {
         return count;
     }
 
-    public static int putStartingNumber() {
-        Scanner inputNumber = new Scanner(System.in);
-        int startNumber = inputNumber.nextInt();
-        return startNumber;
+    public static String replaceCharacter(String text, char currentChar, char newChar) {
+        return text.replace(currentChar, newChar);
     }
 
-    public static int putEndNumber() {
-        Scanner inputNumber = new Scanner(System.in);
-        int endNumber = inputNumber.nextInt();
-        return endNumber;
-    }
-
-    public static char putCharacterToReplace() {
-        Scanner inputChar = new Scanner(System.in);
-        char newCharacter = inputChar.next().charAt(0);
-        return newCharacter;
-    }
-
-    public static String replaceCharacter(String text, int startingNumber, char charToReplace) {
-        return text.substring(0, startingNumber) + charToReplace + text.substring(startingNumber + 1);
-    }
-
-    public static String cutString(String text, int startNumber, int endNumber) {
-        return text.substring(startNumber, endNumber);
+    public static String cutText(String text, char input) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == input) {
+                list.add(i);
+            }
+        }
+        int from = list.get(0);
+        int to = list.get(list.size() - 1);
+        return text.substring(from, to + 1);
     }
 }
 
