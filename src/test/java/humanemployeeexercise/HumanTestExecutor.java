@@ -7,16 +7,16 @@ import java.time.ZonedDateTime;
 
 public class HumanTestExecutor {
     public static void main(String[] args) {
-        Employee employee = new Employee(ZonedDateTime.of(LocalDate.of(1988, 7, 15), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
+        Employee employee = new Employee(ZonedDateTime.of(LocalDate.of(1988, 2, 12), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
                 , ZonedDateTime.of(LocalDate.of(2015, 2, 13), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
-        ZonedDateTime currentDate = ZonedDateTime.now();
-        ZonedDateTime birthDate = employee.getBirthDate();
-        ZonedDateTime dateOfEmployment = employee.getDateOfEmployment();
-        long ageOfEmployee = employee.ageOfEmployee(birthDate, currentDate);
+
+        long ageOfEmployee = employee.ageOfEmployee();
         System.out.println("Age of employee is " + ageOfEmployee + " years.");
-        long ageWhenStartedWorking = employee.ageWhenStartedWorking(birthDate, dateOfEmployment);
+
+        long ageWhenStartedWorking = employee.ageWhenStartedWorking();
         System.out.println("Employee started working at " + ageWhenStartedWorking + " years.");
-        long experience = employee.jobExperience(dateOfEmployment, currentDate);
+
+        long experience = employee.jobExperience();
         System.out.println("Employee has " + experience + " years of experience.");
     }
 }
