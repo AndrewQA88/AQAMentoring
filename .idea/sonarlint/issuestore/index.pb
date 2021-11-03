@@ -26,8 +26,6 @@ Z
 [
 +src/test/java/testng/SimpleTestFactory.java,a\7\a701467a565fa0cc499f00d2b64c2864d7bf44e3
 T
-$src/test/java/exercises/Casting.java,5\e\5e7897eb7c8a7f50923d23d0ce05ce7544dc9902
-T
 $src/test/java/exercises/Ternary.java,9\5\953ceb6803cb8da27ef31937ca5cb5caae1789b5
 [
 +src/test/java/exercises/MultipleMatrix.java,3\7\378bd0b499a560a4b9d262258d0cd93a4ac45f79
