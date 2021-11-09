@@ -24,37 +24,28 @@ public class Employee extends Human {
         return dateOfEmployment;
     }
 
-    public long ageOfEmployee() {
-        long fullYears = ZonedDateTime.now().getYear() - getBirthDate().getYear();
-        if ((ZonedDateTime.now().getMonth().getValue() < getBirthDate().getMonth().getValue())
-                || (ZonedDateTime.now().getMonth().getValue() == getBirthDate().getMonth().getValue()
-                && ZonedDateTime.now().getDayOfMonth() < getBirthDate().getDayOfMonth())) {
+    public long calculateFullYear(ZonedDateTime firstDate, ZonedDateTime secondDate) {
+        long fullYears = firstDate.getYear() - secondDate.getYear();
+        if ((firstDate.getMonth().getValue() < secondDate.getMonth().getValue())
+                || (firstDate.getMonth().getValue() == secondDate.getMonth().getValue() && firstDate.getDayOfMonth() < secondDate.getDayOfMonth())) {
             return fullYears - 1;
         } else {
             return fullYears;
         }
+    }
+
+    public long ageOfEmployee() {
+        ZonedDateTime currentDate = ZonedDateTime.now();
+        return calculateFullYear(currentDate, getBirthDate());
     }
 
     public long ageWhenStartedWorking() {
-        long fullYears = getDateOfEmployment().getYear() - getBirthDate().getYear();
-        if ((getDateOfEmployment().getMonth().getValue() < getBirthDate().getMonth().getValue())
-                || (ZonedDateTime.now().getMonth().getValue() == getBirthDate().getMonth().getValue()
-                && ZonedDateTime.now().getDayOfMonth() < getBirthDate().getDayOfMonth())) {
-            return fullYears - 1;
-        } else {
-            return fullYears;
-        }
+        return calculateFullYear(getDateOfEmployment(), getBirthDate());
     }
 
     public long jobExperience() {
-        long fullYears = ZonedDateTime.now().getYear() - getDateOfEmployment().getYear();
-        if ((ZonedDateTime.now().getMonth().getValue() < getDateOfEmployment().getMonth().getValue())
-                || (ZonedDateTime.now().getMonth().getValue() == getBirthDate().getMonth().getValue()
-                && ZonedDateTime.now().getDayOfMonth() < getBirthDate().getDayOfMonth())) {
-            return (fullYears - 1);
-        } else {
-            return fullYears;
-        }
+        ZonedDateTime currentDate = ZonedDateTime.now();
+        return calculateFullYear(currentDate, getDateOfEmployment());
     }
 
     public int getSalary() {
@@ -79,6 +70,11 @@ public class Employee extends Human {
 
     public ZonedDateTime getVacation() {
         return vacation;
+    }
+
+    @Override
+    public String voice() {
+        return "hey";
     }
 }
 
