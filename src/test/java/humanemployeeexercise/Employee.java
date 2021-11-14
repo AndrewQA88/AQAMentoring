@@ -24,7 +24,7 @@ public class Employee extends Human {
         return dateOfEmployment;
     }
 
-    public long calculateFullYear(ZonedDateTime firstDate, ZonedDateTime secondDate) {
+    public long getCalculationOfFullYears(ZonedDateTime firstDate, ZonedDateTime secondDate) {
         long fullYears = firstDate.getYear() - secondDate.getYear();
         if ((firstDate.getMonth().getValue() < secondDate.getMonth().getValue())
                 || (firstDate.getMonth().getValue() == secondDate.getMonth().getValue() && firstDate.getDayOfMonth() < secondDate.getDayOfMonth())) {
@@ -34,18 +34,18 @@ public class Employee extends Human {
         }
     }
 
-    public long ageOfEmployee() {
+    public long getAgeOfEmployee() {
         ZonedDateTime currentDate = ZonedDateTime.now();
-        return calculateFullYear(currentDate, getBirthDate());
+        return getCalculationOfFullYears(currentDate, getBirthDate());
     }
 
-    public long ageWhenStartedWorking() {
-        return calculateFullYear(getDateOfEmployment(), getBirthDate());
+    public long getAgeWhenStartedWorking() {
+        return getCalculationOfFullYears(dateOfEmployment, getBirthDate());
     }
 
-    public long jobExperience() {
+    public long getJobExperience() {
         ZonedDateTime currentDate = ZonedDateTime.now();
-        return calculateFullYear(currentDate, getDateOfEmployment());
+        return getCalculationOfFullYears(currentDate, dateOfEmployment);
     }
 
     public int getSalary() {
@@ -56,12 +56,14 @@ public class Employee extends Human {
         this.salary = salary;
     }
 
+    @Override
     public String toString() {
-        return this.GREETING + "\n" + "Name: " + super.getName() + "\n" + "Title: " + this.title;
+        return "Name: " + super.getName() + "\n" + this.GREETING + "\n" + "Title: " + this.title + "\n" + "Day of employment: " + this.dateOfEmployment
+                + "\n" + "Salary: " + this.salary + "\n" + "Vacation: " + this.vacation;
     }
 
     public void setVacation(int year, int month) {
-        this.vacation = ZonedDateTime.of(LocalDate.of(year, month, 1), LocalTime.of(0, 0), ZoneId.of("Europe/Helsinki"));
+        setVacation(year, month, 1);
     }
 
     public void setVacation(int year, int month, int day) {
