@@ -13,7 +13,10 @@ public class HumanTestExecutor {
 
         Human human = new Human("Ben", ZonedDateTime.of(LocalDate.of(1988, 12, 3), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki")));
 
-        /*System.out.println("Can breath: " + Creature.isBreathable);
+        /*
+        employee.setSalary(1000);
+        System.out.println(employee.getSalary());
+        System.out.println("Can breath: " + Creature.isBreathable);
         System.out.println(employee);
         System.out.println(human);
 
