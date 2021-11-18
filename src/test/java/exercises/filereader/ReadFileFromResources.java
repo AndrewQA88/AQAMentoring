@@ -1,9 +1,6 @@
 package exercises.filereader;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class ReadFileFromResources {
@@ -11,9 +8,10 @@ public class ReadFileFromResources {
     public static void main(String[] args) {
 
         ReadFileFromResources readFileFromResources = new ReadFileFromResources();
-        String fileName = "test.txt";
-        String brokenName = "ert.com";
-        InputStream is = readFileFromResources.getFileFromResourceAsStream(fileName);
+        File fileSafe = new File("files" + File.separator + "test.txt");
+        String filePath = fileSafe.getPath();
+        String brokenPath = "ert.com";
+        InputStream is = readFileFromResources.getFileFromResourceAsStream(filePath);
         printInputStream(is);
     }
 
@@ -26,8 +24,8 @@ public class ReadFileFromResources {
             return inputStream;
         }
     }
-
-    public static void printInputStream(InputStream is) {
+     /* try with resources.
+      public static void printInputStream(InputStream is) {
         try (InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
             String line;
@@ -36,6 +34,25 @@ public class ReadFileFromResources {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }*/
+
+    public static void printInputStream(InputStream is) {
+        InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        try {
+            BufferedReader reader = new BufferedReader(streamReader);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                streamReader.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
