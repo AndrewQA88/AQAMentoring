@@ -7,11 +7,21 @@ import java.time.ZonedDateTime;
 
 public class HumanTestExecutor {
     public static void main(String[] args) {
-        Company company = new Company();
         Employee employee = new Employee("Ben", "operation", ZonedDateTime.of(LocalDate.of(1988, 11, 18), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
                 , ZonedDateTime.of(LocalDate.of(2005, 2, 15), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
 
         Human human = new Human("Ben", ZonedDateTime.of(LocalDate.of(1988, 12, 3), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki")));
+
+        QualityAssurance qualityAssurance = new QualityAssurance("Alex", "operation", ZonedDateTime.of(LocalDate.of(1988, 11, 18), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
+                , ZonedDateTime.of(LocalDate.of(2005, 2, 15), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
+
+        Developer developer = new Developer("Amul", "operation", ZonedDateTime.of(LocalDate.of(1988, 11, 18), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
+                , ZonedDateTime.of(LocalDate.of(2005, 2, 15), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
+
+        Manager manager = new Manager("Petra", "operation", ZonedDateTime.of(LocalDate.of(1988, 11, 18), LocalTime.of(7, 30), ZoneId.of("Europe/Helsinki"))
+                , ZonedDateTime.of(LocalDate.of(2005, 2, 15), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
+
+        Dog dog = new Dog();
 
         /*
         employee.setSalary(1000);
@@ -34,10 +44,15 @@ public class HumanTestExecutor {
         System.out.println("Employee has " + experience + " years of experience.");
 
         employee.setSalary(1000);
-        company.allowance(employee);
-        company.getAllowance(employee);
         System.out.println("Current salary of employee is " + employee.getSalary() + "$");
 
         human.getMeaning(); */
+
+        Company company = new Company();
+        company.Allowance(qualityAssurance);
+        company.Allowance(developer);
+        company.Allowance(manager);
+        company.Allowance(dog);
     }
 }
+

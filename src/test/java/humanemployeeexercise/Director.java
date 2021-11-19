@@ -9,7 +9,6 @@ public class Director extends Employee {
 
     int salary;
 
-
     public int getSalary(Human human) {
         if (human instanceof Director) {
             return salary;
