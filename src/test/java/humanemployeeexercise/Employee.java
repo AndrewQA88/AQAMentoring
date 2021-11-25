@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 
 public class Employee extends Human {
 
-    private final String GREETING;
+
     private ZonedDateTime dateOfEmployment;
     private int salary;
     private String title;
@@ -15,7 +15,7 @@ public class Employee extends Human {
 
     Employee(String name, String title, ZonedDateTime birthDate, ZonedDateTime dateOfEmployment) {
         super(name, birthDate);
-        this.GREETING = "Hello , I'm employed.";
+        this.greeting = "Hello , I'm employed.";
         this.dateOfEmployment = dateOfEmployment;
         this.title = title;
     }
@@ -58,7 +58,7 @@ public class Employee extends Human {
 
     @Override
     public String toString() {
-        return "Name: " + super.getName() + "\n" + this.GREETING + "\n" + "Title: " + this.title + "\n" + "Day of employment: " + this.dateOfEmployment
+        return super.toString()  + "\n" + "Title: " + this.title + "\n" + "Day of employment: " + this.dateOfEmployment
                 + "\n" + "Salary: " + this.salary + "\n" + "Vacation: " + this.vacation;
     }
 
@@ -79,6 +79,3 @@ public class Employee extends Human {
         return "hey";
     }
 }
-
-
-

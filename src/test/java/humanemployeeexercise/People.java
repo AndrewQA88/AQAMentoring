@@ -2,7 +2,7 @@ package humanemployeeexercise;
 
 public abstract class People implements Creature {
 
-    public int averageLifeCycle = 100;
+    private int averageLifeCycle = 100;
 
     abstract void temperature();
 

@@ -9,8 +9,8 @@ public class Director extends Employee {
 
     int salary;
 
-    public int getSalary(Human human) {
-        if (human instanceof Director) {
+    public int getSalary(Object requester) {
+        if (requester instanceof Human) {
             return salary;
         } else {
             try {

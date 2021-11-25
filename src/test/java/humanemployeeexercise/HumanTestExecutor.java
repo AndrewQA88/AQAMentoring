@@ -22,7 +22,6 @@ public class HumanTestExecutor {
                 , ZonedDateTime.of(LocalDate.of(2005, 2, 15), LocalTime.of(9, 0), ZoneId.of("Europe/Helsinki")));
 
         Dog dog = new Dog();
-
         /*
         employee.setSalary(1000);
         System.out.println(employee.getSalary());
@@ -49,10 +48,10 @@ public class HumanTestExecutor {
         human.getMeaning(); */
 
         Company company = new Company();
-        company.Allowance(qualityAssurance);
-        company.Allowance(developer);
-        company.Allowance(manager);
-        company.Allowance(dog);
+        company.allowance(qualityAssurance);
+        company.allowance(developer);
+        company.allowance(manager);
+        company.allowance(dog);
     }
 }
 

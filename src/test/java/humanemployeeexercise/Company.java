@@ -1,12 +1,7 @@
 package humanemployeeexercise;
 
-public class Company {
 
-    public void oldAllowance(Employee employee) {
-        if (employee.getJobExperience() > 10) {
-            employee.setSalary(employee.getSalary() + 500);
-        }
-    }
+public class Company {
 
     public Employee getAllowance(Employee employee) {
         if (employee.getJobExperience() > 10) {
@@ -15,11 +10,11 @@ public class Company {
         return employee;
     }
 
-    public void Allowance(Object requester) {
+    public void allowance(Object requester) {
         if (requester instanceof Employee) {
             Employee employee = (Employee) requester;
-            String jobDescription = employee.getClass().getAnnotation(JobDescription.class).value();
             int salary = employee.getSalary();
+            String jobDescription = requester.getClass().getAnnotation(JobDescription.class).value();
             if (employee.getJobExperience() >= 10) {
                 employee.setSalary(salary + 500);
                 System.out.println("You earn " + (salary + 500) + "$ for " + jobDescription + ".");
@@ -27,10 +22,19 @@ public class Company {
                 System.out.println("You earn " + salary + "$ for " + jobDescription + ".");
             }
         } else {
-            try {
-                throw new IncorrectAccessException("Who let the dog in!");
-            } catch (IncorrectAccessException e) {
-                e.printStackTrace();
+            if (requester.getClass().isAnnotationPresent(JobDescription.class)) {
+                try {
+                    throw new IncorrectAccessException("Salary rise is declined. Job description '"
+                            + requester.getClass().getAnnotation(JobDescription.class).value() + "' is not appropriate.");
+                } catch (IncorrectAccessException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    throw new IncorrectAccessException("Salary rise is declined. Job description is not present");
+                } catch (IncorrectAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
