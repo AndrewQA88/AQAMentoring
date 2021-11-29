@@ -52,6 +52,14 @@ public class HumanTestExecutor {
         company.allowance(developer);
         company.allowance(manager);
         company.allowance(dog);
+
+        Unicorn unicorn = Unicorn.getUnicorn();
+        System.out.println(unicorn.hashCode());
+
+        Unicorn unicorn1 = Unicorn.getUnicorn();
+        System.out.println(unicorn1.hashCode());
+
+        System.out.println(unicorn.equals(unicorn1));
     }
 }
 

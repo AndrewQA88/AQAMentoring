@@ -58,7 +58,7 @@ public class Employee extends Human {
 
     @Override
     public String toString() {
-        return super.toString()  + "\n" + "Title: " + this.title + "\n" + "Day of employment: " + this.dateOfEmployment
+        return super.toString() + "\n" + "Title: " + this.title + "\n" + "Day of employment: " + this.dateOfEmployment
                 + "\n" + "Salary: " + this.salary + "\n" + "Vacation: " + this.vacation;
     }
 
