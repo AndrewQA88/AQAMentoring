@@ -9,7 +9,6 @@ public class Maps {
 
         Map<String, String> maps = new HashMap<>();
         maps.put("1", "One");
-        maps.put("2", "Two");
         System.out.println("Before: " + maps);
 
         for (Map.Entry<String, String> entry : maps.entrySet()) {
