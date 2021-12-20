@@ -65,5 +65,12 @@ public class Workman implements Comparable<Workman> {
         Collections.sort(employees, salary);
         System.out.println(employees);
 
+        System.out.println("Comparator: sort by salary for blacklisted.");
+        List<Workman> blacklist = new ArrayList<>();
+        blacklist.add(new Workman(3, 2000, 32));
+        blacklist.add(new Workman(1, 700, 22));
+        blacklist.add(new Workman(6, 10000, 37));
+        blacklist.add(new Workman(7, 3000, 29));
+        Collections.sort(blacklist, salary);
     }
 }
